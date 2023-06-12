@@ -1,13 +1,13 @@
 # Cell Nuclei Image Segmentation
 
 
-### 1. Project Description
-  * The nuclei inside every cell in our body contains information that can explain about what happpen inside the cell. For exmple the DNA that contains within the nuclei can tell about the diseases such as cancer, heart disease and many more rare disorders. Identification of nuclei in cells can help researchers to find faster solution for every disease that found. Therefore, an automated artificial intelligence model are needed in helping to identify the images of cell nuclei.
+## 1. Project Description
+  * The nuclei inside every cell in our body contains information that can explain about what happpen inside the cell. For example DNA that contains within the nuclei can tell about the diseases such as cancer, heart disease and many more rare disorders. Identification of nuclei in cells can help researchers to find faster solution for every disease that found. Therefore, an automated artificial intelligence model are needed to identify the images of cell nuclei.
   * In this project, a semantic image segmentation model is developed to make prediction of the nuclei. 
 
   
 
-### 2. Software used, framework,how to run project
+## 2. Software used, framework,how to run project
    * Software needed:
      * Visual Studio Code as my IDE. You can get here https://code.visualstudio.com/download
      * Anaconda. https://www.anaconda.com/download
@@ -48,26 +48,61 @@
 
  
  
-### 3. Results
-1. The architecture model that is used in this project is **_Long Short Term Memory(LSTM)_** ,number of nodes is 64 nodes & window size is 30 LSTM, Dense, and Dropout layers have been implemented in the
-model.
+## 3. Results
+### Model Architecture
+For the model architecture, U-NET model architecture has been built for this project 
 
-![model_architecture](https://github.com/dalila28/covid19-case-prediction/blob/main/images/model_architecture.png)
+![model_architecture](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/architecture.png)
 
-
-2. Below are the snapshot of the model performance under 100 epochs which **_Mean Squared Error(MSE)_** as loss & **_Mean Absolute Percentage Error (MAPE)_** as metrics
-![model_performance1](https://github.com/dalila28/covid19-case-prediction/blob/main/images/model_performance1.png)
-![model_performance2](https://github.com/dalila28/covid19-case-prediction/blob/main/images/model_performance2.png)
-
-3. Tensorboard snapshot showing graph of MSE
-![tensorboard](https://github.com/dalila28/covid19-case-prediction/blob/main/images/tensorboard.png)
+                                                           Model Architecture
 
 
-4. Figure below showing the matplotlib graph comparison between actual & predicted result of covid-19 case in Malaysia based on my deep learning project. From the graph we can see that the predicted line is following the curve of actual line which as for my observation I can say that the result is good eventhough it not following correctly the spike of curve. If we want to improve the result, I think we can increase number of epochs so model has more opportunities to learn from the data and adjust its parameters to improve performance.
-![actual_vs_predicted](https://github.com/dalila28/covid19-case-prediction/blob/main/images/actual_vs_predicted.png)
+### 2. Model performance
 
 
-### 4. Credits
-1. The data on the COVID-19 epidemic in Malaysia is sourced from the official repository, https://github.com/MoH-Malaysia/covid19-public which is powered by CPRC, CPRC Hospital System, MKAK, and MySejahtera.
-2. For creating tensorboard, I refer tutorial from https://www.tensorflow.org/tensorboard/get_started
-3. Regarding the tensorflow API that I used in my project, I always refer to this documentation https://www.tensorflow.org/api_docs/python/tf/all_symbols
+
+   * Snapshot of model performance below showing that the model should undergo 100 epochs of training, but with the implementation of early stopping during training, the model just undergo 17 epochs of training. It is because  EarlyStopping callback can detect if the model's performance is not improving on new data, which is as an indication that the model is no longer learning meaningful patterns and further training may not be beneficial. Therefore, training will stop early to avoid overfitting. During my model training, both training and validation achieved 96%of accuracy and I can say that my model perform optimally as the difference of values between training loss and validation loss is just small gap.
+   
+
+![model_performance](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/model_performance.png)
+
+                                                       Model Performance
+
+
+  *   In short, application of early stopping callbacks in the model training can avoid our model to be overfitted.
+  
+
+
+### 3. Data inspection
+
+
+![data inspection](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/data_inspection.png)
+
+
+### 4. Output Prediction
+
+![predict1](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/predict1.png)
+
+
+
+![predict2](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/predict2.png)
+
+
+
+![predict3](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/predict3.png)
+
+
+
+
+![predict4](https://github.com/dalila28/nuclei_image_segmentation/blob/main/images/predict4.png)
+
+
+                                                      
+
+
+## 5. Credits
+1. Title: Data Science Bowl 2018 - Kaggle Competitions
+   Website: Kaggle
+   URL: https://www.kaggle.com/competitions/data-science-bowl-2018/overview
+2. I followed the TensorBoard tutorial provided by TensorFlow, available at https://www.tensorflow.org/tensorboard/get_started, to create visualizations for monitoring and analyzing models.
+3. To ensure efficiency in my project, I consistently relied on the comprehensive TensorFlow API documentation at https://www.tensorflow.org/api_docs/python/tf/all_symbols. This documentation served as my go-to resource for exploring the various functions, classes, and modules provided by TensorFlow, enabling me to effectively utilize the powerful TensorFlow framework in my project.
